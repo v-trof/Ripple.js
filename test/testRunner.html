@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    <link rel="stylesheet" href="./testStyle.css">
+  </head>
+  <body>
+    <div id="testBtns">
+      <button> 1 </button>
+      <button> 2 </button>
+    </div>
+    <div id="mocha"></div>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script>mocha.setup('bdd')</script>
+
+    <!-- Lib -->
+    <link rel="stylesheet" href="../dist/ripple.css">
+    <script src="../dist/ripple.js"></script>
+
+    <!-- Helpers -->
+    <script src="./helper.js"></script>
+
+    <!-- Tests -->
+    <script src="./api.js"></script>
+    <script src="./bind.js"></script>
+    <script src="./position.js"></script>
+    <script src="./ripple.js"></script>
+
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>

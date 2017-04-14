@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Playgroud</title>
+    <link rel='stylesheet' href='../src/ripple.css'>
+  </head>
+  <body>
+    <style>
+
+      button, button:focus, button:active {
+        border-radius: 2px;
+        padding: 200px 400px;
+        margin: 40px;
+        background: #fafafa;
+        border: 0;
+        box-shadow: 0 6px 12px 0 rgba(0,0,0,0.21);
+
+      }
+      button:focus {
+        outline: 0;
+      }
+      .lulbro {
+        width: 30px;
+        height: 30px;
+        background: #f5241f;
+      }
+    </style>
+    <button> 1 <div class='lulbro'></div< </button>
+    <button> 2 </button>
+    <button> 3 </button>
+    <button> 4 </button>
+    <button> 5 </button>
+    <button> 6 </button>
+    <script src='../dist/ripple.js'></script>
+    <script>
+      fact = ripple.watch('button', {});
+    </script>
+  </body>
+</html>
