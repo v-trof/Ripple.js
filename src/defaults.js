@@ -3,12 +3,12 @@
  * @type {Object}
  */
 let defaults = {
-  color: "#757575",
-  opacity: 0.15,
+  color: "#fafafa",
+  opacity: 0.21,
   borderRadius: 'auto',
   borderWidth: 'auto',
   zIndex: 999,
-  transitionDuration: 375,
+  transitionDuration: 500,
   timingFunction: "cubic-bezier(.4,0`,.42,1)", //timing function
   constant: false // enlarging speed is constant
 }

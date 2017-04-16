@@ -225,12 +225,12 @@ exports.getDefaults = getDefaults;
  * @type {Object}
  */
 var defaults = {
-  color: "#757575",
-  opacity: 0.15,
+  color: "#fafafa",
+  opacity: 0.21,
   borderRadius: 'auto',
   borderWidth: 'auto',
   zIndex: 999,
-  transitionDuration: 375,
+  transitionDuration: 500,
   timingFunction: "cubic-bezier(.4,0`,.42,1)", //timing function
   constant: false // enlarging speed is constant
 };
@@ -383,7 +383,7 @@ var Ripple = exports.Ripple = function () {
       if (this.props.constant) {
         transitionTime = this.props.transitionDuration;
       } else {
-        transitionTime = this.props.transitionDuration + this.radius;
+        transitionTime = this.props.transitionDuration + this.radius * 1.1;
       }
 
       return transitionTime;
@@ -463,7 +463,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @param  {Object} options any modification of default for these ripples
  * @return {RippleFactory} generates ripple effects for your elem`ets
  */
-function bind_to(elements, options) {
+function bindTo(elements, options) {
   if (elements instanceof NodeList) {
     var old = elements;
     elements = [];
@@ -502,7 +502,7 @@ function watch(selector, options, scope) {
   };
 }
 
-exports.bind_to = bind_to;
+exports.bindTo = bindTo;
 exports.watch = watch;
 exports.setDefaults = _defaults.setDefaults;
 

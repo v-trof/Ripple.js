@@ -10,7 +10,7 @@ describe("Ripple zone", function() {
     btn = document.createElement('button')
     document.querySelector('#testBtns').appendChild(btn)
 
-    rippleBind = ripple.bind_to(btn)
+    rippleBind = ripple.bindTo(btn)
   })
 
   afterEach(function() {

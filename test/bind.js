@@ -26,9 +26,9 @@ describe("Binders", function() {
     rippleBind.remove()
   })
 
-  describe("Bind_to", function() {
+  describe("bindTo", function() {
     it("Gets triggered", function(done) {
-      rippleBind = ripple.bind_to(document.querySelector('#testBtns button'))
+      rippleBind = ripple.bindTo(document.querySelector('#testBtns button'))
 
       document.querySelector('#testBtns button')
         .dispatchEvent(mouseEvent('mousedown'))

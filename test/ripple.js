@@ -11,7 +11,7 @@ describe("Ripple effect", function() {
       btn = document.createElement('button')
       document.querySelector('#testBtns').appendChild(btn)
 
-      rippleBind = ripple.bind_to(btn)
+      rippleBind = ripple.bindTo(btn)
     })
 
     afterEach(function() {
@@ -47,13 +47,16 @@ describe("Ripple effect", function() {
                      .style.transitionTimingFunction, 'linear')
     })
 
+    /*
+    Still thinking of proper way to test this (exept interval + state wait)
+
     it("Has size-dependent duration when is not constant", function() {
 
     })
 
     it("Has fixed duration when constant", function() {
 
-    })
+    })*/
   })
 
 

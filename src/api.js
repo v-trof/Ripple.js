@@ -8,7 +8,7 @@ import {Ripple, RippleFactory} from './ripple'
  * @param  {Object} options any modification of default for these ripples
  * @return {RippleFactory} generates ripple effects for your elem`ets
  */
-function bind_to(elements, options) {
+function bindTo(elements, options) {
   if(elements instanceof NodeList) {
     let old = elements
     elements = []
@@ -45,6 +45,6 @@ function watch(selector, options, scope) {
   }
 }
 
-exports.bind_to = bind_to
+exports.bindTo = bindTo
 exports.watch = watch
 exports.setDefaults = setDefaults

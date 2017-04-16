@@ -106,7 +106,7 @@ export class Ripple {
     if(this.props.constant) {
       transitionTime = this.props.transitionDuration
     } else {
-      transitionTime = this.props.transitionDuration + this.radius
+      transitionTime = this.props.transitionDuration + this.radius * 1.1
     }
 
     return transitionTime

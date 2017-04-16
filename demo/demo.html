@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ripple DEMO</title>
+  </head>
+  <body>
+    <main>
+      <h1> Ripple.js </h1>
+      <p>A tiny (3kb and less if used with your webpack) js lib to create ripples
+      your designers and users would appreciate. </p>
+
+      <section>
+        <h2>Easy to use</h2>
+        <div class="demo demo-1">
+          <div class="column">
+            <div class="example">
+              <button> btn </button>
+              <button> btn </button>
+            </div>
+            <div class="tip">
+              Hold to see it fill your container
+            </div>
+            <div class="tip">
+              Multiple ripples are possible
+            </div>
+          </div>
+          <pre><code class="language-js code">
+            var buttons = document.querySelectorAll(".demo-1 button");
+
+            ripple.bindTo(buttons);
+          </code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Even easier</h2>
+        <div class="demo demo-2">
+          <div class="example">
+            <button> btn </button>
+            <button class="add-btn">+</button>
+          </div>
+          <pre><code class="language-js code">
+            ripple.watch(".demo-2 button");
+          </code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Any shape, any size</h2>
+        <div class="demo demo-3">
+          <div class="column">
+            <div class="example">
+              <button> btn </button>
+              <button class="add-btn">+</button>
+            </div>
+            <div class="tip">
+              You can edit nextBtnProps on the right
+            </div>
+          </div>
+          <pre>
+            <code class="language-js code" contenteditable>
+              var nextBtnProps = {
+                "width": "300px",
+                "height": "600px",
+                "border": "solid 8px #000",
+                "borderRadius": "20px",
+                "background": "#333"
+              }
+
+              ripple.watch(".demo-3 button");
+            </code>
+          </pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Customizable</h2>
+        <div class="demo demo-4">
+          <div class="column">
+            <div class="example">
+              <button> btn </button>
+              <button class="btn--transparent"> Another btn </button>
+            </div>
+            <div class="tip">
+              You can edit rippleBind.factory.rippleProps on the right
+            </div>
+          </div>
+          <pre><code class="language-js code" contenteditable>
+            var rippleBind = ripple.watch(".demo-4 button");
+
+            rippleBind.factory.rippleProps = {
+                "color": "#2196F3", //background color (all your css supported)
+                "opacity": 0.25,
+                "borderRadius": 20, //makes it a bit faster on slow cpu
+                "borderWidth": "auto", //or value in px
+                "zIndex": 999, //riplle mask is positioned above target
+                "transitionDuration": 675, //duration may varie depending on container size
+                "timingFunction": "cubic-bezier(.4, 0, .42, 1)", //timing function
+                "constant": false // enlarging speed is constant
+            }
+          </code></pre>
+        </div>
+      </section>
+    </div>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="./demo.css">
+
+    <link rel="stylesheet" href="../dist/ripple.css">
+    <script src="../dist/ripple.js"></script>
+
+    <link rel="stylesheet" href="./vendor/prism.css">
+    <script src="./vendor/prism.js"></script>
+
+    <script src="./demo.js"></script>
+  </body>
+</html>

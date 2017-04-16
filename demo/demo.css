@@ -1,0 +1,109 @@
+body, html {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+}
+
+h1, h2 {
+  margin: 0;
+  margin-bottom: .5em;
+  font-weight: 300;
+}
+
+h1 {
+  text-align: center;
+  background: #2196F3;
+  border-radius: 2px;
+  padding: 1rem 2rem;
+  color: #fafafa;
+  border: 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .36);
+
+  cursor: default;
+}
+
+h2 {
+  margin-top: 2em;
+}
+
+
+main {
+  max-width: 1280px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+/* Demo sections */
+section {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.demo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.demo > * {
+  flex: 1;
+  margin: .5rem 0;
+}
+
+.example {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.tip {
+  font-size: 0.85rem;
+  opacity: .54;
+  line-height: 2;
+}
+
+/* Buttons */
+button {
+  font-size: 16px;
+  background: #2196F3;
+  border-radius: 2px;
+  padding: 1rem 2rem;
+  color: #fafafa;
+  margin: 0 2rem 1rem 0;
+  border: 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .36);
+  transition: 375ms cubic-bezier(.4, 0, .42,1);
+}
+
+.btn--transparent {
+  background: transparent;
+  color: #2196F3;
+  font-weight: bold;
+  box-shadow: none;
+}
+
+.btn--transparent:hover, .btn--transparent:focus {
+  background: transparent;
+  box-shadow: none;
+}
+
+.add-btn {
+  padding: 1rem 1.35rem;
+}
+
+button:focus, button:hover,*[contenteditable]:focus {
+  outline: 0;
+}
+
+button:hover {
+  box-shadow: 0 3px 6px 0 rgba(0,0,0, .36);
+}
