@@ -25,7 +25,7 @@ h1 {
   color: #fafafa;
   border: 0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .36);
-
+  user-select: none;
   cursor: default;
 }
 
@@ -73,6 +73,7 @@ section {
 
 /* Buttons */
 button {
+  box-sizing: border-box;
   font-size: 16px;
   background: #2196F3;
   border-radius: 2px;

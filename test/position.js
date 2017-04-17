@@ -20,11 +20,28 @@ describe("Ripple zone", function() {
   })
 
   it("Positions right above element", function() {
+    btn.dispatchEvent(mouseEvent('mousedown'))
 
+    let btnRect = btn.getBoundingClientRect()
+    let rippleRect = document.querySelector('.ripple').getBoundingClientRect()
+
+    assert.equal(btnRect.top, rippleRect.top)
+    assert.equal(btnRect.left, rippleRect.left)
+    assert.equal(btnRect.width, rippleRect.width)
+    assert.equal(btnRect.height, rippleRect.height)
   })
 
   it("Positions right above element when page is scrolled", function() {
+    window.scrollTo(0, 300)
+    btn.dispatchEvent(mouseEvent('mousedown'))
 
+    let btnRect = btn.getBoundingClientRect()
+    let rippleRect = document.querySelector('.ripple').getBoundingClientRect()
+
+    assert.equal(btnRect.top, rippleRect.top)
+    assert.equal(btnRect.left, rippleRect.left)
+    assert.equal(btnRect.width, rippleRect.width)
+    assert.equal(btnRect.height, rippleRect.height)
   })
 
   it("Accepts z-index", function() {
