@@ -11,6 +11,10 @@ body {
   font-size: 16px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1, h2 {
   margin: 0;
   margin-bottom: .5em;
@@ -33,9 +37,9 @@ h2 {
   margin-top: 2em;
 }
 
-
 main {
-  max-width: 1280px;
+  max-width: 1080px;
+  padding: 2rem;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -101,10 +105,25 @@ button {
   padding: 1rem 1.35rem;
 }
 
+.language-js {
+  overflow-x: scroll;
+}
+
 button:focus, button:hover,*[contenteditable]:focus {
   outline: 0;
 }
 
 button:hover {
   box-shadow: 0 3px 6px 0 rgba(0,0,0, .36);
+}
+
+@media(max-width: 980px) {
+  .demo {
+    flex-direction: column;
+  }
+
+  .language-js {
+    max-width: 100vw;
+    width: calc(100vw - 4rem);
+  }
 }

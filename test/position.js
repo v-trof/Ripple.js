@@ -32,7 +32,7 @@ describe("Ripple zone", function() {
   })
 
   it("Positions right above element when page is scrolled", function() {
-    window.scrollTo(0, 300)
+    window.scrollTo(300, 300)
     btn.dispatchEvent(mouseEvent('mousedown'))
 
     let btnRect = btn.getBoundingClientRect()
@@ -42,6 +42,8 @@ describe("Ripple zone", function() {
     assert.equal(btnRect.left, rippleRect.left)
     assert.equal(btnRect.width, rippleRect.width)
     assert.equal(btnRect.height, rippleRect.height)
+
+    window.scrollTo(0, 0)
   })
 
   it("Accepts z-index", function() {
