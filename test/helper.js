@@ -41,3 +41,18 @@ function dispatchEvent (el, evt) {
   }
   return evt;
 }
+
+function getRipplesState() {
+  let ripples = Array.from(document.querySelectorAll('.ripple__effect'))
+
+  if(ripples.length === 0) return ['none']
+
+  let states = ripples.map(function (currRipple) {
+    if(currRipple.classList.contains('ripple__effect--hidden')) return 'hidden'
+    if(currRipple.classList.contains('ripple__effect--hide')) return 'hiding'
+
+    return 'shown'
+  })
+
+  return states
+}

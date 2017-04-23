@@ -1,6 +1,14 @@
 var assert = chai.assert
 
 describe("Ripple effect", function() {
+  function createBigBtn() {
+    let btn = document.createElement('button')
+    btn.style.width = '400px'
+    btn.style.height = '400px'
+
+    return btn
+  }
+
   describe("Customiztion", function() {
     let rippleBind;
     let btn;
@@ -47,16 +55,56 @@ describe("Ripple effect", function() {
                      .style.transitionTimingFunction, 'linear')
     })
 
-    /*
-    Still thinking of proper way to test this (exept interval + state wait)
+    it("Has size-dependent duration when is not constant", function(done) {
+      //duration inscreases with button size, so we check it for being longer
+      let startTime = 0
+      let expectedDuration = rippleBind.factory.rippleProps.transitionDuration + 100
 
-    it("Has size-dependent duration when is not constant", function() {
+      rippleBind.factory.rippleProps.constant = false
 
+      btn.dispatchEvent(mouseEvent('mousedown'))
+      btn.dispatchEvent(mouseEvent('mouseup'))
+
+      let checkInterval = setInterval(function() {
+        let states = getRipplesState()
+        if(states[0] === 'shown' && ! startTime) {
+          startTime = new Date()
+        }
+
+        if(states[0] === 'none') {
+          let duration = Date.now() - startTime
+
+          clearInterval(checkInterval)
+          done(assert.isAtLeast(duration, expectedDuration + 10))
+        }
+      }, 1)
     })
 
-    it("Has fixed duration when constant", function() {
+    it("Has fixed duration when constant", function(done) {
+      //duration inscreases with button size, so we check it for being amost equal
+      let startTime = 0
+      let expectedDuration = rippleBind.factory.rippleProps.transitionDuration + 100
 
-    })*/
+      rippleBind.factory.rippleProps.constant = true
+
+      btn.dispatchEvent(mouseEvent('mousedown'))
+      btn.dispatchEvent(mouseEvent('mouseup'))
+
+      let checkInterval = setInterval(function() {
+        let states = getRipplesState()
+
+        if(states[0] === 'shown' && ! startTime) {
+          startTime = new Date()
+        }
+
+        if(states[0] === 'none') {
+          let duration = Date.now() - startTime
+
+          clearInterval(checkInterval)
+          done(assert.closeTo(duration, 5, expectedDuration))
+        }
+      }, 1)
+    })
   })
 
 

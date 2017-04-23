@@ -1,18 +1,6 @@
 var assert = chai.assert
 var expect = chai.expect
 
-let rippleState = function() {
-  let ripples = document.querySelectorAll('.ripple__effect')
-  let lastRipple = ripples[ripples.length - 1]
-
-  if(! lastRipple) return 'none'
-
-  if(lastRipple.classList.contains('ripple__effect--hidden')) return 'hidden'
-  if(lastRipple.classList.contains('ripple__effect--hide')) return 'hiding'
-
-  return 'shown'
-}
-
 describe("Binders", function() {
 
   let rippleBind;
@@ -37,7 +25,7 @@ describe("Binders", function() {
 
       setTimeout(function() {
         try {
-          assert.equal(rippleState(), 'shown', 'Ripple was not shown')
+          assert.equal(getRipplesState()[0], 'shown', 'Ripple was not shown')
         } catch (e) {
           done(e)
         }
@@ -48,7 +36,7 @@ describe("Binders", function() {
           .dispatchEvent(mouseEvent('mouseup'))
         setTimeout(function() {
           try {
-            assert.equal(rippleState(), 'hiding', 'Ripple did not hide')
+            assert.equal(getRipplesState()[0], 'hiding', 'Ripple did not hide')
             done()
           } catch (e) {
             done(e)
@@ -67,7 +55,7 @@ describe("Binders", function() {
 
       setTimeout(function() {
         try {
-          assert.equal(rippleState(), 'shown', 'Ripple was not shown')
+          assert.equal(getRipplesState()[0], 'shown', 'Ripple was not shown')
         } catch (e) {
           done(e)
         }
@@ -78,7 +66,7 @@ describe("Binders", function() {
           .dispatchEvent(mouseEvent('mouseup'))
         setTimeout(function() {
           try {
-            assert.equal(rippleState(), 'hiding', 'Ripple did not hide')
+            assert.equal(getRipplesState()[0], 'hiding', 'Ripple did not hide')
             done()
           } catch (e) {
             done(e)
@@ -97,7 +85,7 @@ describe("Binders", function() {
 
       setTimeout(function() {
         try {
-          assert.equal(rippleState(), 'shown', 'Ripple was not shown')
+          assert.equal(getRipplesState()[0], 'shown', 'Ripple was not shown')
         } catch (e) {
           done(e)
         }
@@ -108,7 +96,7 @@ describe("Binders", function() {
         setTimeout(function() {
           btn.remove()
           try {
-            assert.equal(rippleState(), 'hiding', 'Ripple did not hide')
+            assert.equal(getRipplesState()[0], 'hiding', 'Ripple did not hide')
             done()
           } catch (e) {
             done(e)
@@ -129,7 +117,7 @@ describe("Binders", function() {
       setTimeout(function() {
         btn.remove()
         try {
-          assert.equal(rippleState(), 'none', 'Ripple did trigger')
+          assert.equal(getRipplesState()[0], 'none', 'Ripple did trigger')
           done()
         } catch (e) {
           done(e)
