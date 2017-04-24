@@ -1,27 +1,24 @@
 {
   "name": "proper-ripple",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "description": "A material design ripple your designer wouldn't be ashamed of.",
   "main": "index.js",
   "author": "Vsevolod Trofimov <seva.trofimov2@gmail.com>",
   "license": "MIT",
+  "repository": "https://github.com/VsevolodTrofimov/Ripple.js",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.3.3",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.22.0",
-    "babel-runtime": "^6.23.0",
     "chai": "^3.5.0",
-    "gulp": "^3.9.1",
-    "gulp-cssnano": "^2.1.2",
-    "loader": "^2.1.1",
+    "css-loader": "^0.28.0",
+    "extract-text-webpack-plugin": "^2.1.0",
     "mocha": "^3.2.0",
     "webpack": "^2.3.3"
   },
   "scripts": {
-    "test": "start ./test/testRunner.html"
+    "test": "start ./test/testRunner.html",
+    "build": "webpack"
   }
 }

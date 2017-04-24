@@ -2,6 +2,8 @@ import binders from './binders'
 import {getDefaults} from './defaults'
 import {getStyle} from './utility'
 
+import './ripple.css'
+
 /** The actual ripple effect presentational class */
 export class Ripple {
   constructor(props) {

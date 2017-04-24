@@ -45,6 +45,8 @@ function watch(selector, options, scope) {
   }
 }
 
-exports.bindTo = bindTo
-exports.watch = watch
-exports.setDefaults = setDefaults
+export default {
+  bindTo,
+  watch,
+  setDefaults
+}

@@ -2,9 +2,10 @@ const path = require("path")
 const SRC_PATH = path.resolve(__dirname, './src')
 const DIST_PATH = path.resolve(__dirname, './dist')
 const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(SRC_PATH + '/api.js'),
+  entry: path.resolve(SRC_PATH + '/webpackExport.js'),
   output: {
     library: 'ripple',
     path: DIST_PATH,
@@ -21,11 +22,20 @@ module.exports = {
             plugins: ['transform-object-assign'],
             presets: ['es2015']
           },
+        }, {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            loader: 'css-loader',
+            options: {
+              minimize: true
+            }
+          })
         }
     ]
   },
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin()
+    new ExtractTextPlugin('ripple.css'),
+    new webpack.optimize.UglifyJsPlugin()
   ],
   devtool: 'source-map',
 }
