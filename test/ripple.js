@@ -1,32 +1,32 @@
 var assert = chai.assert
 
 describe("Ripple effect", function() {
-  function createBigBtn() {
-    let btn = document.createElement('button')
-    btn.style.width = '400px'
-    btn.style.height = '400px'
+  let rippleBind;
+  let btn;
 
-    return btn
-  }
+  beforeEach(function() {
+    rippleBind = undefined
+
+    btn = document.createElement('button')
+    document.querySelector('#testBtns').appendChild(btn)
+
+    rippleBind = ripple.bindTo(btn)
+  })
+
+  afterEach(function() {
+    rippleBind.remove()
+    btn.remove()
+    document.querySelectorAll('.ripple').forEach((el) => {el.remove()})
+  })
 
   describe("Customiztion", function() {
-    let rippleBind;
-    let btn;
+    function createBigBtn() {
+      let btn = document.createElement('button')
+      btn.style.width = '400px'
+      btn.style.height = '400px'
 
-    beforeEach(function() {
-      rippleBind = undefined
-
-      btn = document.createElement('button')
-      document.querySelector('#testBtns').appendChild(btn)
-
-      rippleBind = ripple.bindTo(btn)
-    })
-
-    afterEach(function() {
-      rippleBind.remove()
-      btn.remove()
-      document.querySelectorAll('.ripple').forEach((el) => {el.remove()})
-    })
+      return btn
+    }
 
     it("Changes color", function() {
       rippleBind.factory.rippleProps.color = '#000'
@@ -109,24 +109,38 @@ describe("Ripple effect", function() {
 
 
   describe("Actions", function() {
-    it("Shows on mousedown", function() {
+    it("Shows on mousedown", function(done) {
+      btn.dispatchEvent(mouseEvent('mousedown'))
 
+      setTimeout(function() {
+        done(assert.equal(getRipplesState()[0], 'shown'))
+      }, 10)
     })
 
-    it("Waits for mouseup", function() {
+    it("Waits for mouseup | mouseout", function(done) {
+      btn.dispatchEvent(mouseEvent('mousedown'))
 
+      setTimeout(function() {
+        done(assert.equal(getRipplesState()[0], 'shown'))
+      }, 300)
     })
 
-    it("Hides on mouseup", function() {
+    it("Hides on mouseup", function(done) {
+      btn.dispatchEvent(mouseEvent('mousedown'))
+      btn.dispatchEvent(mouseEvent('mouseup'))
 
+      setTimeout(function() {
+        done(assert.equal(getRipplesState()[0], 'hiding'))
+      }, 200)
     })
 
-    it("Waits for mouseout", function() {
+    it("Hides on mouseout", function(done) {
+      btn.dispatchEvent(mouseEvent('mousedown'))
+      btn.dispatchEvent(mouseEvent('mouseout'))
 
-    })
-
-    it("Hides on mouseout", function() {
-
+      setTimeout(function() {
+        done(assert.equal(getRipplesState()[0], 'hiding'))
+      }, 200)
     })
   });
 })
