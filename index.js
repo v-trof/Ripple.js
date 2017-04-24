@@ -1,5 +1,3 @@
-import * from './src/api'
+import api from './src/api'
 
-export bindTo
-export watch
-export setDefaults
+export default api
