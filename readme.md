@@ -37,6 +37,7 @@ Adding listener to element
 ```javascript
 var yourElement = document.querySelector('.login-button')
 var manyNodes = document.querySelectorAll('button')
+
 ripple.bindTo(yourElement) //will trigger on your element
 ripple.bindTo(manyNodes) //will trigger on any of these
 ```
@@ -68,7 +69,7 @@ rippleBind.remove()
   constant: false //{bool} enlarging speed is constant on any element size
 }
 ```
-####Way A
+#### Way A
 ```javascript
 var rippleBind = ripple.watch('#demo-2 button')
 rippleBind.factory.rippleProps = {
@@ -79,18 +80,19 @@ rippleBind.factory.rippleProps = {
 rippleBind.factory.rippleProps.color = '#000'
 ```
 
-####Way B
+#### Way B
 ```javascript
 var myProps = {
 	color: '#000',
 	opacity: 0.4,
 	transitionDuration: 700
 }
+
 ripple.watch('#demo-2 button', myProps)
 ripple.bindTo(manyNodes, myProps)
 ```
 
-####Way C
+#### Way C
 ```javascript
 ripple.setDefaults({
 	color: '#000',
