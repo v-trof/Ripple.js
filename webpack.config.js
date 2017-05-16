@@ -37,5 +37,5 @@ module.exports = {
     new ExtractTextPlugin('ripple.css'),
     new webpack.optimize.UglifyJsPlugin()
   ],
-  devtool: 'source-map',
+  // devtool: 'source-map',
 }
