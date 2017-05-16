@@ -1,6 +1,6 @@
 {
   "name": "proper-ripple",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A material design ripple your designer wouldn't be ashamed of.",
   "main": "index.js",
   "author": "Vsevolod Trofimov <seva.trofimov2@gmail.com>",
