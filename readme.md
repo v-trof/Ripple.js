@@ -1,6 +1,5 @@
 # Ripple.js
 Proper Material Design ripple effect for the web, that would interfere your element's DOM.
- - Tiny (3kb and less if used with your webpack)
  - Customization
  - Multiple ripples at once
  - Enlarges on mousedown, fades out on mouseup
