@@ -8,15 +8,13 @@ Proper Material Design ripple effect for the web, that wouldn't interfere your e
 
 [See a Demo](https://vsevolodtrofimov.github.io/Ripple.js/docs/)
 
-## How to get ripple
+## How to get Ripple.js
 
 **Like vendor lib**
 
 CSS & JS file
 
 Check releases page
-
------------
 
 **via npm**
 ```bash
@@ -28,7 +26,7 @@ $ npm install proper-ripple --save-dev
 $ yarn add proper-ripple
 ```
 
-Make sure to include it in your webpack (uses babel-loader with es-2015 preset & css-loader)
+Make sure to include it in your webpack (npm/yarn usage) (uses babel-loader with es-2015 preset & css-loader)
 
 ## Usage
 
