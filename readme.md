@@ -1,5 +1,5 @@
 # Ripple.js
-Proper Material Design ripple effect for the web, that wouldn't interfere your element's DOM.
+Proper Material Design ripple effect for the web, that wouldn't interfere your elements' DOM.
  - Customization
  - Multiple ripples at once
  - Enlarges on mousedown, fades out on mouseup
