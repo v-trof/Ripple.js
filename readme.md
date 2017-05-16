@@ -6,7 +6,7 @@ Proper Material Design ripple effect for the web, that wouldn't interfere your e
  - Works with touch devices
  - Simple API
 
-[See a Demo](https://vsevolodtrofimov.github.io/Ripple.js/docs/)
+[See a Demo](https://vsevolodtrofimov.github.io/Ripple.js/)
 
 ## How to get Ripple.js
 
