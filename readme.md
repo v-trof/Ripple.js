@@ -7,13 +7,17 @@ Proper Material Design ripple effect for the web, that would interfere your elem
  - Works with touch devices
  - Simple API
 
-[See a Demo](https://vsevolodtrofimov.github.io/Ripple.js/)
+[See a Demo](https://vsevolodtrofimov.github.io/Ripple.js/docs/)
 
 ## How to get ripple
 
 **Like vendor lib**
+
 CSS & JS file
+
 Check releases page
+
+-----------
 
 **via npm**
 ```bash
@@ -26,8 +30,6 @@ $ yarn add proper-ripple
 ```
 
 Make sure to include it in your webpack (uses babel-loader with es-2015 preset & css-loader)
-
------------
 
 ## Usage
 
