@@ -40,8 +40,7 @@ export class Ripple {
       top: Math.abs(rect.top - pageY)
     }
 
-    let borderWidth = undefined
-    let borderRadius = undefined
+    let borderWidth, borderRadius
 
     this.radius = this.calcRadius(effectCenter, rect)
     let transitionTime = this.calcTransition()
@@ -49,12 +48,12 @@ export class Ripple {
     let effectStyle = this.$effect.style
 
     if(this.props.borderRadius === 'auto') {
-      borderRadius = parseInt(getStyle(target, 'border-radius'))
+      borderRadius = parseInt(getStyle(target, 'border-radius'), 10)
     } else {
       borderRadius = this.props.borderRadius
     }
     if(this.props.borderWidth === 'auto') {
-      borderWidth = parseInt(getStyle(target, 'border-width'))
+      borderWidth = parseInt(getStyle(target, 'border-width'), 10)
     } else {
       borderWidth = this.props.borderWidth
     }
@@ -96,9 +95,9 @@ export class Ripple {
 
     this.$effect.classList.add('ripple__effect--hide')
     setTimeout(() => {
-      cb()
       self.$.remove()
       delete self.$
+      return cb()
     }, transitionTime)
   }
 
@@ -125,8 +124,8 @@ export class Ripple {
   getRect(target) {
     let bodyRect = document.body.getBoundingClientRect() //for scroll fix
     let targetRect = target.getBoundingClientRect()
-    let marginTop = parseInt(getStyle(document.body, 'margin-top'))
-    let marginLeft = parseInt(getStyle(document.body, 'margin-left'))
+    let marginTop = parseInt(getStyle(document.body, 'margin-top'), 10)
+    let marginLeft = parseInt(getStyle(document.body, 'margin-left'), 10)
 
     let rect = {
       top: targetRect.top - bodyRect.top + marginTop,
