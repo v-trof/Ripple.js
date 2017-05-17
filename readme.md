@@ -1,4 +1,4 @@
-# Ripple.js • [![Code Climate](https://codeclimate.com/github/VsevolodTrofimov/Ripple.js/badges/gpa.svg)](https://codeclimate.com/github/VsevolodTrofimov/Ripple.js)
+# Ripple.js • [![Code Climate](https://codeclimate.com/github/VsevolodTrofimov/Ripple.js/badges/gpa.svg)](https://codeclimate.com/github/VsevolodTrofimov/Ripple.js) [![npm version](https://badge.fury.io/js/proper-ripple.svg)](https://badge.fury.io/js/proper-ripple)
 
 Proper Material Design ripple effect for the web, that wouldn't interfere your elements' DOM.
  - Tiny (3kb gzipped, even less with your webpack)
