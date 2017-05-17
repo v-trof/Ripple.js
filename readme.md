@@ -12,20 +12,18 @@ Proper Material Design ripple effect for the web, that wouldn't interfere your e
 
 [See a Demo](https://vsevolodtrofimov.github.io/Ripple.js/)
 
-## How to get Ripple.js
+## Getting Ripple.js
 
-**Like a vendor lib**
+#### Like a vendor lib
 
-CSS & JS file
+[Check the latest release](https://github.com/VsevolodTrofimov/Ripple.js/releases)
 
-Check releases page
-
-**via npm**
+### via npm
 ```bash
 $ npm install proper-ripple --save-dev
 ```
 
-**via yarn**
+### via yarn
 ```bash
 $ yarn add proper-ripple
 ```
