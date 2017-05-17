@@ -1,4 +1,5 @@
-# Ripple.js
+# Ripple.js • [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
+
 Proper Material Design ripple effect for the web, that wouldn't interfere your elements' DOM.
  - Tiny (3kb gzipped, even less with your webpack)
  - Customizible
