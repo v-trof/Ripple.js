@@ -25,10 +25,13 @@ module.exports = {
         }, {
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
-            loader: 'css-loader',
-            options: {
-              minimize: true
-            }
+            use: [{
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+                importLoaders: 1
+              }
+            }, 'postcss-loader'],
           })
         }
     ]

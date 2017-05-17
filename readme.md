@@ -1,10 +1,13 @@
 # Ripple.js
 Proper Material Design ripple effect for the web, that wouldn't interfere your elements' DOM.
- - Customization
- - Multiple ripples at once
+ - Tiny (3kb gzipped, even less with your webpack)
+ - Customizible
+ - Capable of creating multiple ripples at once
  - Enlarges on mousedown, fades out on mouseup
  - Works with touch devices
- - Simple API
+ - Has simple API
+ - Supports IE 9+
+ - Always runs at 30+ fps (55fps average)
 
 [See a Demo](https://vsevolodtrofimov.github.io/Ripple.js/)
 
