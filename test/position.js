@@ -1,14 +1,14 @@
 var assert = chai.assert
 
 describe("Ripple zone", function() {
-  let rippleBind;
-  let btn;
+  var rippleBind;
+  var btn;
 
   beforeEach(function() {
     rippleBind = undefined
 
     btn = document.createElement('button')
-    document.querySelector('#testBtns').appendChild(btn)
+    document.body.querySelector('#testBtns').appendChild(btn)
 
     rippleBind = ripple.bindTo(btn)
   })
@@ -16,14 +16,14 @@ describe("Ripple zone", function() {
   afterEach(function() {
     rippleBind.remove()
     btn.remove()
-    document.querySelectorAll('.ripple').forEach((el) => {el.remove()})
+    document.body.querySelectorAll('.ripple').toArray().forEach(function(el) {el.remove()})
   })
 
   it("Positions right above element", function() {
     btn.dispatchEvent(mouseEvent('mousedown'))
 
-    let btnRect = btn.getBoundingClientRect()
-    let rippleRect = document.querySelector('.ripple').getBoundingClientRect()
+    var btnRect = btn.getBoundingClientRect()
+    var rippleRect = document.body.querySelector('.ripple').getBoundingClientRect()
 
     assert.equal(btnRect.top, rippleRect.top)
     assert.equal(btnRect.left, rippleRect.left)
@@ -35,8 +35,8 @@ describe("Ripple zone", function() {
     window.scrollTo(300, 300)
     btn.dispatchEvent(mouseEvent('mousedown'))
 
-    let btnRect = btn.getBoundingClientRect()
-    let rippleRect = document.querySelector('.ripple').getBoundingClientRect()
+    var btnRect = btn.getBoundingClientRect()
+    var rippleRect = document.body.querySelector('.ripple').getBoundingClientRect()
 
     assert.equal(btnRect.top, rippleRect.top)
     assert.equal(btnRect.left, rippleRect.left)
@@ -50,40 +50,46 @@ describe("Ripple zone", function() {
     rippleBind.factory.rippleProps.zIndex = 10
     btn.dispatchEvent(mouseEvent('mousedown'))
 
-    assert.equal(document.querySelector('.ripple').style.zIndex, '10')
+    assert.equal(document.body.querySelector('.ripple').style.zIndex, '10')
   })
 
-  it("Changes borderWidth automatically", function() {
-    rippleBind.factory.rippleProps.border = 'auto'
+  if(getStyle(document.body, 'border-width') === '') {
+    console.warn('WARNING: Some styles are uncheckable in phantomjs');
+  } else {
+    it("Changes borderWidth automatically", function() {
+      rippleBind.factory.rippleProps.border = 'auto'
 
-    btn.style.border = '20px solid #000'
+      btn.style.border = '20px solid #000'
 
-    btn.dispatchEvent(mouseEvent('mousedown'))
+      btn.dispatchEvent(mouseEvent('mousedown'))
 
-    assert.equal(document.querySelector('.ripple').style.borderWidth, '20px')
-  })
+      if(btn.style.borderWidth) {
+        assert.equal(document.body.querySelector('.ripple').style.borderWidth, '20px')
+      }
+    })
 
-  it("Changes borderWidth manulally", function() {
-    rippleBind.factory.rippleProps.borderWidth = 10
-    btn.dispatchEvent(mouseEvent('mousedown'))
+    it("Changes borderWidth manulally", function() {
+      rippleBind.factory.rippleProps.borderWidth = 10
+      btn.dispatchEvent(mouseEvent('mousedown'))
 
-    assert.equal(document.querySelector('.ripple').style.borderWidth, '10px')
-  })
+      assert.equal(document.body.querySelector('.ripple').style.borderWidth, '10px')
+    })
 
-  it("Changes borderRadius automatically", function() {
-    rippleBind.factory.rippleProps.borderRadius = 'auto'
+    it("Changes borderRadius automatically", function() {
+      rippleBind.factory.rippleProps.borderRadius = 'auto'
 
-    btn.style.borderRadius = '20px'
+      btn.style.borderRadius = '20px'
 
-    btn.dispatchEvent(mouseEvent('mousedown'))
+      btn.dispatchEvent(mouseEvent('mousedown'))
 
-    assert.equal(document.querySelector('.ripple').style.borderRadius, '20px')
-  })
+      assert.equal(document.body.querySelector('.ripple').style.borderRadius, '20px')
+    })
 
-  it("Changes borderRadius manulally", function() {
-    rippleBind.factory.rippleProps.borderRadius = 10
-    btn.dispatchEvent(mouseEvent('mousedown'))
+    it("Changes borderRadius manulally", function() {
+      rippleBind.factory.rippleProps.borderRadius = 10
+      btn.dispatchEvent(mouseEvent('mousedown'))
 
-    assert.equal(document.querySelector('.ripple').style.borderRadius, '10px')
-  })
+      assert.equal(document.body.querySelector('.ripple').style.borderRadius, '10px')
+    })
+  }
 })

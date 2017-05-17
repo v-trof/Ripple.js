@@ -43,11 +43,11 @@ function dispatchEvent (el, evt) {
 }
 
 function getRipplesState() {
-  let ripples = Array.from(document.querySelectorAll('.ripple__effect'))
+  var ripples = document.body.querySelectorAll('.ripple__effect').toArray()
 
   if(ripples.length === 0) return ['none']
 
-  let states = ripples.map(function (currRipple) {
+  var states = ripples.map(function (currRipple) {
     if(currRipple.classList.contains('ripple__effect--hidden')) return 'hidden'
     if(currRipple.classList.contains('ripple__effect--hide')) return 'hiding'
 
@@ -55,4 +55,23 @@ function getRipplesState() {
   })
 
   return states
+}
+
+
+// Fix for old browsers & phantomjs
+NodeList.prototype.toArray = function () {
+  return Array.prototype.slice.call(this)
+}
+
+function getStyle(el, strCssRule) {
+    var strValue = ""
+    if (document.defaultView && document.defaultView.getComputedStyle) {
+      strValue = document.defaultView.getComputedStyle(el, null).getPropertyValue(strCssRule)
+    } else if(el.currentStyle) {
+      strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1) {
+        return p1.toUpperCase()
+      })
+      strValue = el.currentStyle[strCssRule]
+    }
+    return strValue
 }

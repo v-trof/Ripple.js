@@ -2,7 +2,7 @@ var assert = chai.assert
 
 describe("API", function() {
 
-  let rippleBind;
+  var rippleBind;
 
   beforeEach(function() {
     rippleBind = undefined
@@ -14,14 +14,14 @@ describe("API", function() {
   })
 
   it("Returns ripple_factory", function() {
-    rippleBind = ripple.bindTo(document.querySelectorAll('#testBtns button'))
+    rippleBind = ripple.bindTo(document.body.querySelectorAll('#testBtns button'))
     assert.isOk(rippleBind.factory)
     assert.isObject(rippleBind.factory)
     assert.isObject(rippleBind.factory.rippleProps)
   })
 
   it("Accepts ripple_factory changes", function() {
-    rippleBind = ripple.bindTo(document.querySelectorAll('#testBtns button'))
+    rippleBind = ripple.bindTo(document.body.querySelectorAll('#testBtns button'))
 
     rippleBind.factory.rippleProps.color = '#fafafa'
 
@@ -29,8 +29,8 @@ describe("API", function() {
   })
 
   it("Only modifies 1 instance", function() {
-    rippleBind = ripple.bindTo(document.querySelector('#testBtns button'))
-    let rippleBind2 = ripple.bindTo(document.querySelectorAll('#testBtns button')[1])
+    rippleBind = ripple.bindTo(document.body.querySelector('#testBtns button'))
+    var rippleBind2 = ripple.bindTo(document.body.querySelectorAll('#testBtns button')[1])
 
     rippleBind.factory.rippleProps.color = '#fff'
     rippleBind2.factory.rippleProps.color = '#000'
@@ -50,7 +50,7 @@ describe("API", function() {
 
   it("Accepts defaults change", function() {
     ripple.setDefaults({opacity: '1'})
-    rippleBind = ripple.bindTo(document.querySelector('#testBtns button'))
+    rippleBind = ripple.bindTo(document.body.querySelector('#testBtns button'))
 
     assert.equal(rippleBind.factory.create().props.opacity, '1')
   })

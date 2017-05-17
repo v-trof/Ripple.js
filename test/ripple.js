@@ -1,14 +1,14 @@
 var assert = chai.assert
 
 describe("Ripple effect", function() {
-  let rippleBind;
-  let btn;
+  var rippleBind;
+  var btn;
 
   beforeEach(function() {
     rippleBind = undefined
 
     btn = document.createElement('button')
-    document.querySelector('#testBtns').appendChild(btn)
+    document.body.querySelector('#testBtns').appendChild(btn)
 
     rippleBind = ripple.bindTo(btn)
   })
@@ -16,12 +16,13 @@ describe("Ripple effect", function() {
   afterEach(function() {
     rippleBind.remove()
     btn.remove()
-    document.querySelectorAll('.ripple').forEach((el) => {el.remove()})
+    document.body.querySelectorAll('.ripple')
+      .toArray().forEach(function(el) {el.remove()})
   })
 
   describe("Customiztion", function() {
     function createBigBtn() {
-      let btn = document.createElement('button')
+      var btn = document.createElement('button')
       btn.style.width = '400px'
       btn.style.height = '400px'
 
@@ -32,7 +33,7 @@ describe("Ripple effect", function() {
       rippleBind.factory.rippleProps.color = '#000'
       btn.dispatchEvent(mouseEvent('mousedown'))
 
-      assert.equal(document.querySelector('.ripple__effect')
+      assert.equal(document.body.querySelector('.ripple__effect')
                      .style.background, 'rgb(0, 0, 0)')
     })
 
@@ -40,7 +41,7 @@ describe("Ripple effect", function() {
       rippleBind.factory.rippleProps.opacity = 1
       btn.dispatchEvent(mouseEvent('mousedown'))
 
-      assert.equal(document.querySelector('.ripple__effect').style.opacity, 1)
+      assert.equal(document.body.querySelector('.ripple__effect').style.opacity, 1)
     })
 
     it("Changes transitionDuration", function() {
@@ -51,28 +52,28 @@ describe("Ripple effect", function() {
       rippleBind.factory.rippleProps.timingFunction = 'linear'
       btn.dispatchEvent(mouseEvent('mousedown'))
 
-      assert.equal(document.querySelector('.ripple__effect')
+      assert.equal(document.body.querySelector('.ripple__effect')
                      .style.transitionTimingFunction, 'linear')
     })
 
     it("Has size-dependent duration when is not constant", function(done) {
       //duration inscreases with button size, so we check it for being longer
-      let startTime = 0
-      let expectedDuration = rippleBind.factory.rippleProps.transitionDuration + 100
+      var startTime = 0
+      var expectedDuration = rippleBind.factory.rippleProps.transitionDuration + 100
 
       rippleBind.factory.rippleProps.constant = false
 
       btn.dispatchEvent(mouseEvent('mousedown'))
       btn.dispatchEvent(mouseEvent('mouseup'))
 
-      let checkInterval = setInterval(function() {
-        let states = getRipplesState()
+      var checkInterval = setInterval(function() {
+        var states = getRipplesState()
         if(states[0] === 'shown' && ! startTime) {
           startTime = new Date()
         }
 
         if(states[0] === 'none') {
-          let duration = Date.now() - startTime
+          var duration = Date.now() - startTime
 
           clearInterval(checkInterval)
           done(assert.isAtLeast(duration, expectedDuration + 10))
@@ -82,26 +83,26 @@ describe("Ripple effect", function() {
 
     it("Has fixed duration when constant", function(done) {
       //duration inscreases with button size, so we check it for being amost equal
-      let startTime = 0
-      let expectedDuration = rippleBind.factory.rippleProps.transitionDuration + 100
+      var startTime = 0
+      var expectedDuration = rippleBind.factory.rippleProps.transitionDuration + 100
 
       rippleBind.factory.rippleProps.constant = true
 
       btn.dispatchEvent(mouseEvent('mousedown'))
       btn.dispatchEvent(mouseEvent('mouseup'))
 
-      let checkInterval = setInterval(function() {
-        let states = getRipplesState()
+      var checkInterval = setInterval(function() {
+        var states = getRipplesState()
 
         if(states[0] === 'shown' && ! startTime) {
           startTime = new Date()
         }
 
         if(states[0] === 'none') {
-          let duration = Date.now() - startTime
+          var duration = Date.now() - startTime
 
           clearInterval(checkInterval)
-          done(assert.closeTo(duration, 5, expectedDuration))
+          done(assert.closeTo(duration, 10, expectedDuration))
         }
       }, 1)
     })

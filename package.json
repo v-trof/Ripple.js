@@ -25,7 +25,8 @@
     "last 2 versions"
   ],
   "scripts": {
-    "test": "start ./test/testRunner.html",
+    "test": "mocha-phantomjs ./test/testRunner.html",
+    "test-browser": "start ./test/testRunner.html",
     "build": "webpack"
   }
 }

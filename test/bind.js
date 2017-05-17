@@ -3,11 +3,11 @@ var expect = chai.expect
 
 describe("Binders", function() {
 
-  let rippleBind;
+  var rippleBind;
 
   beforeEach(function() {
     rippleBind = undefined
-    document.querySelectorAll('.ripple').forEach((el) => {el.remove()})
+    document.body.querySelectorAll('.ripple').toArray().forEach(function(el) {el.remove()})
   })
 
   afterEach(function() {
@@ -16,9 +16,9 @@ describe("Binders", function() {
 
   describe("bindTo", function() {
     it("Gets triggered", function(done) {
-      rippleBind = ripple.bindTo(document.querySelector('#testBtns button'))
+      rippleBind = ripple.bindTo(document.body.querySelector('#testBtns button'))
 
-      document.querySelector('#testBtns button')
+      document.body.querySelector('#testBtns button')
         .dispatchEvent(mouseEvent('mousedown'))
 
       //events fire after a while
@@ -32,7 +32,7 @@ describe("Binders", function() {
       }, 10)
 
       setTimeout(function() {
-        document.querySelector('#testBtns button')
+        document.body.querySelector('#testBtns button')
           .dispatchEvent(mouseEvent('mouseup'))
         setTimeout(function() {
           try {
@@ -50,7 +50,7 @@ describe("Binders", function() {
     it("Gets triggered on existing elements", function(done) {
       rippleBind = ripple.watch('button')
 
-      document.querySelector('#testBtns button')
+      document.body.querySelector('#testBtns button')
         .dispatchEvent(mouseEvent('mousedown'))
 
       setTimeout(function() {
@@ -62,7 +62,7 @@ describe("Binders", function() {
       }, 10)
 
       setTimeout(function() {
-        document.querySelector('#testBtns button')
+        document.body.querySelector('#testBtns button')
           .dispatchEvent(mouseEvent('mouseup'))
         setTimeout(function() {
           try {
@@ -78,8 +78,8 @@ describe("Binders", function() {
     it("Gets triggered on added elements", function(done) {
       rippleBind = ripple.watch('button')
 
-      let btn = document.createElement('button')
-      document.querySelector('#testBtns').appendChild(btn)
+      var btn = document.createElement('button')
+      document.body.querySelector('#testBtns').appendChild(btn)
 
       btn.dispatchEvent(mouseEvent('mousedown'))
 
@@ -107,9 +107,9 @@ describe("Binders", function() {
 
     it("Gets triggered ONLY inside the scope", function(done) {
       rippleBind = ripple.watch('button', {},
-                    document.querySelector('#testBtns'))
+                    document.body.querySelector('#testBtns'))
 
-      let btn = document.createElement('button')
+      var btn = document.createElement('button')
       document.body.appendChild(btn)
 
       btn.dispatchEvent(mouseEvent('mousedown'))

@@ -102,3 +102,23 @@ ripple.setDefaults({
 	transitionDuration: 700
 })
 ```
+
+---
+
+## Running tests
+There are 2 ways to run tests for Ripple.js
+1) PhantomJS
+2) Browser mocha tests
+
+Test's specs files are the same, but for the sake of PhantomJS they must be written in ES5
+
+#### CLI PhantomJS testing
+```bash
+$ npm install -g mocha-phantomjs
+$ npm test
+```
+
+#### Browser testing
+```bash
+$ npm run test-browser
+```
