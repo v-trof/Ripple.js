@@ -111,8 +111,10 @@ There are 2 ways to run tests for Ripple.js
 Test's specs files are the same, but for the sake of PhantomJS they must be written in ES5
 
 #### CLI PhantomJS testing
+
+Assuming you have all devDependencies installed
+
 ```bash
-$ npm install -g mocha-phantomjs
 $ npm test
 ```
 

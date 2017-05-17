@@ -1,6 +1,6 @@
 {
   "name": "proper-ripple",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A material design ripple your designer wouldn't be ashamed of.",
   "main": "index.js",
   "author": "Vsevolod Trofimov <seva.trofimov2@gmail.com>",
@@ -15,9 +15,10 @@
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "mocha": "^3.2.0",
+    "mocha-phantomjs": "^4.1.0",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.5",
-    "webpack": "^2.3.3"
+    "webpack": "^2.5.1"
   },
   "browserslist": [
     "IE 9",
@@ -25,8 +26,8 @@
     "last 2 versions"
   ],
   "scripts": {
-    "test": "mocha-phantomjs ./test/testRunner.html",
+    "test": "node ./node_modules/mocha-phantomjs/bin/mocha-phantomjs ./test/testRunner.html",
     "test-browser": "start ./test/testRunner.html",
-    "build": "webpack"
+    "build": "node ./node_modules/webpack/bin/webpack"
   }
 }
