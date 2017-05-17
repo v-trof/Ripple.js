@@ -14,7 +14,7 @@ Proper Material Design ripple effect for the web, that wouldn't interfere your e
 
 ## How to get Ripple.js
 
-**Like vendor lib**
+**Like a vendor lib**
 
 CSS & JS file
 
@@ -34,7 +34,7 @@ Make sure to include it in your webpack (npm/yarn usage) (uses babel-loader with
 
 ## Usage
 
-Adding listener to element
+This is how you can add a listener to an element \ array of elements (DOM nodes)
 ```javascript
 var yourElement = document.querySelector('.login-button')
 var manyNodes = document.querySelectorAll('button')
@@ -43,21 +43,21 @@ ripple.bindTo(yourElement) //will trigger on your element
 ripple.bindTo(manyNodes) //will trigger on any of these
 ```
 
-Or watching all elements matching a selector
+This is how you can tell Ripple.js to watch any element matching a selector
 ```javascript
 //will trigger on any element mathching given selector
 ripple.watch('button')
 ripple.watch('#demo-2 button')
 ```
 
-Unbinding
+This is how you can remove all listeners (rippleBind is the same for ripple.bindTo)
 ```javascript
 var rippleBind = ripple.watch('#demo-2 button')
 rippleBind.remove()
 ```
 
 ## Customization
-#### Full set of props
+### Full set of props
 ```javascript
 {
   color: "#fafafa", //{string} background color (like in CSS)
@@ -70,6 +70,7 @@ rippleBind.remove()
   constant: false //{bool} enlarging speed is constant on any element size
 }
 ```
+### Changing props
 #### Way A
 ```javascript
 var rippleBind = ripple.watch('#demo-2 button')
