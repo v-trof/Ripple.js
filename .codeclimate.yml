@@ -1,6 +1,10 @@
-exclude_paths:
-- "test/"
-- "playground/"
-- "docs/"
-- "dist/"
-- "**/vendor/"
+
+---
+engines: 
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+ratings:
+  paths:
+  - "src/"
