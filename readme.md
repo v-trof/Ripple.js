@@ -7,7 +7,7 @@ Proper Material Design ripple effect for the web, that wouldn't interfere your e
  - Enlarges on mousedown, fades out on mouseup
  - Works with touch devices
  - Has simple API
- - Supports IE 9+
+ - Supports IE 10+
  - Runs smoothly (always 30+ fps) on low-end devices (with power of CSS3 transitions)
 
 [See a Demo](https://vsevolodtrofimov.github.io/Ripple.js/)
