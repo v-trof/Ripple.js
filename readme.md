@@ -32,6 +32,11 @@ Make sure to include it in your webpack (npm/yarn usage) (uses babel-loader with
 
 ## Usage
 
+This is how you can tell Ripple.js to watch any element matching a selector
+```javascript
+ripple.watch('#demo-2 button')
+```
+
 This is how you can add a listener to an element \ array of elements (DOM nodes)
 ```javascript
 var yourElement = document.querySelector('.login-button')
@@ -39,13 +44,6 @@ var manyNodes = document.querySelectorAll('button')
 
 ripple.bindTo(yourElement) //will trigger on your element
 ripple.bindTo(manyNodes) //will trigger on any of these
-```
-
-This is how you can tell Ripple.js to watch any element matching a selector
-```javascript
-//will trigger on any element mathching given selector
-ripple.watch('button')
-ripple.watch('#demo-2 button')
 ```
 
 This is how you can remove all listeners (rippleBind is the same for ripple.bindTo)
