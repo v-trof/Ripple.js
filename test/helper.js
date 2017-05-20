@@ -63,15 +63,26 @@ NodeList.prototype.toArray = function () {
   return Array.prototype.slice.call(this)
 }
 
-function getStyle(el, strCssRule) {
-    var strValue = ""
-    if (document.defaultView && document.defaultView.getComputedStyle) {
-      strValue = document.defaultView.getComputedStyle(el, null).getPropertyValue(strCssRule)
-    } else if(el.currentStyle) {
-      strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1) {
-        return p1.toUpperCase()
+// getStyle
+function mapToShorthand(styles, sides, type) {
+      var strValue = ""
+      sides.forEach(function(side, i) {
+          strValue += styles.getPropertyValue('border-' + side + '-' + type)
+          if(i < 3) strValue += ' '
       })
-      strValue = el.currentStyle[strCssRule]
+
+      return strValue;
+}
+
+function getStyle(el, strCssRule) {
+    var styles = window.getComputedStyle(el, null)
+
+    if(strCssRule === 'border-width') {
+      return mapToShorthand(styles, ['top', 'right', 'bottom', 'left'], 'width');
+    } else if (strCssRule === 'border-radius') {
+      return mapToShorthand(styles,
+                            ['top-left', 'top-right', 'bottom-right', 'bottom-left'], 'radius');
+    } else {
+      return styles.getPropertyValue(strCssRule)
     }
-    return strValue
 }

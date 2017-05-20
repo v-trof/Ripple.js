@@ -93,7 +93,7 @@
             rippleBind.factory.rippleProps = {
                 "color": "#2196F3", //background color (all your css supported)
                 "opacity": 0.25,
-                "borderRadius": 20, //makes it a bit faster on slow cpu
+                "borderRadius": "10px 20px", //makes it a bit faster on slow cpu
                 "borderWidth": "auto", //or value in px
                 "zIndex": 999, //riplle mask is positioned above target
                 "transitionDuration": 675, //duration may varie depending on container size
@@ -109,7 +109,8 @@
     <link rel="stylesheet" href="./demo.css">
 
     <link rel="stylesheet" href="./vendor/ripple.css">
-    <script src="./vendor/ripple.js"></script>
+    <!-- <script src="./vendor/ripple.js"></script> -->
+    <script src="../dist/ripple.js"></script>
 
     <link rel="stylesheet" href="./vendor/prism.css">
     <script src="./vendor/prism.js"></script>

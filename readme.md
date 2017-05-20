@@ -58,8 +58,8 @@ rippleBind.remove()
 {
   color: "#fafafa", //{string} background color (like in CSS)
   opacity: 0.21, //{number} ripple max opacity (like in CSS)
-  borderRadius: 'auto', //auto -- copy target props OR {number} in px
-  borderWidth: 'auto',  //auto -- copy target props OR {number} in px
+  borderRadius: 'auto', //auto -- copy target props OR {Srting} CSS prop value
+  borderWidth: 'auto',  //auto -- copy target props OR {number} CSS prop value !IN PX!
   zIndex: 999, //{number}
   transitionDuration: 500, //{number} in ms
   timingFunction: "cubic-bezier(.4,0`,.42,1)", //{string} transition timing function

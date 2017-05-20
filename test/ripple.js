@@ -34,7 +34,7 @@ describe("Ripple effect", function() {
       btn.dispatchEvent(mouseEvent('mousedown'))
 
       assert.equal(document.body.querySelector('.ripple__effect')
-                     .style.background, 'rgb(0, 0, 0)')
+                     .style.background.split(')')[0], 'rgb(0, 0, 0')
     })
 
     it("Changes opacity", function() {

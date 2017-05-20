@@ -25,10 +25,10 @@ describe("Ripple zone", function() {
     var btnRect = btn.getBoundingClientRect()
     var rippleRect = document.body.querySelector('.ripple').getBoundingClientRect()
 
-    assert.equal(btnRect.top, rippleRect.top)
-    assert.equal(btnRect.left, rippleRect.left)
-    assert.equal(btnRect.width, rippleRect.width)
-    assert.equal(btnRect.height, rippleRect.height)
+    assert.equal(Math.floor(btnRect.top), Math.floor(rippleRect.top))
+    assert.equal(Math.floor(btnRect.left), Math.floor(rippleRect.left))
+    assert.equal(Math.floor(btnRect.width), Math.floor(rippleRect.width))
+    assert.equal(Math.floor(btnRect.height), Math.floor(rippleRect.height))
   })
 
   it("Positions right above element when page is scrolled", function() {
@@ -38,10 +38,10 @@ describe("Ripple zone", function() {
     var btnRect = btn.getBoundingClientRect()
     var rippleRect = document.body.querySelector('.ripple').getBoundingClientRect()
 
-    assert.equal(btnRect.top, rippleRect.top)
-    assert.equal(btnRect.left, rippleRect.left)
-    assert.equal(btnRect.width, rippleRect.width)
-    assert.equal(btnRect.height, rippleRect.height)
+    assert.equal(Math.floor(btnRect.top), Math.floor(rippleRect.top))
+    assert.equal(Math.floor(btnRect.left), Math.floor(rippleRect.left))
+    assert.equal(Math.floor(btnRect.width), Math.floor(rippleRect.width))
+    assert.equal(Math.floor(btnRect.height), Math.floor(rippleRect.height))
 
     window.scrollTo(0, 0)
   })
@@ -53,43 +53,43 @@ describe("Ripple zone", function() {
     assert.equal(document.body.querySelector('.ripple').style.zIndex, '10')
   })
 
-  if(getStyle(document.body, 'border-width') === '') {
-    console.warn('WARNING: Some styles are uncheckable in phantomjs');
-  } else {
-    it("Changes borderWidth automatically", function() {
-      rippleBind.factory.rippleProps.border = 'auto'
+  it("Changes borderWidth automatically", function() {
+    rippleBind.factory.rippleProps.border = 'auto'
 
-      btn.style.border = '20px solid #000'
+    btn.style.border = '20px solid #000'
 
-      btn.dispatchEvent(mouseEvent('mousedown'))
+    btn.dispatchEvent(mouseEvent('mousedown'))
 
-      if(btn.style.borderWidth) {
-        assert.equal(document.body.querySelector('.ripple').style.borderWidth, '20px')
-      }
-    })
+    if(btn.style.borderWidth) {
+      assert.equal(document.body.querySelector('.ripple').style.borderWidth, '20px')
+    }
+  })
 
-    it("Changes borderWidth manulally", function() {
-      rippleBind.factory.rippleProps.borderWidth = 10
-      btn.dispatchEvent(mouseEvent('mousedown'))
+  it("Changes borderWidth manulally", function() {
+    rippleBind.factory.rippleProps.borderWidth = '10px'
+    btn.dispatchEvent(mouseEvent('mousedown'))
 
-      assert.equal(document.body.querySelector('.ripple').style.borderWidth, '10px')
-    })
+    assert.equal(document.body.querySelector('.ripple').style.borderWidth, '10px')
+  })
 
-    it("Changes borderRadius automatically", function() {
-      rippleBind.factory.rippleProps.borderRadius = 'auto'
+  it("Changes borderRadius automatically", function() {
+    rippleBind.factory.rippleProps.borderRadius = 'auto'
 
-      btn.style.borderRadius = '20px'
+    btn.style.borderRadius = '5px'
 
-      btn.dispatchEvent(mouseEvent('mousedown'))
+    btn.dispatchEvent(mouseEvent('mousedown'))
 
-      assert.equal(document.body.querySelector('.ripple').style.borderRadius, '20px')
-    })
+    assert.equal(getStyle(
+      document.body.querySelector('.ripple'), 'border-radius'),
+      '5px 5px 5px 5px')
+  })
 
-    it("Changes borderRadius manulally", function() {
-      rippleBind.factory.rippleProps.borderRadius = 10
-      btn.dispatchEvent(mouseEvent('mousedown'))
+  it("Changes borderRadius manulally", function() {
+    rippleBind.factory.rippleProps.borderRadius = '10px'
+    btn.dispatchEvent(mouseEvent('mousedown'))
 
-      assert.equal(document.body.querySelector('.ripple').style.borderRadius, '10px')
-    })
-  }
+    assert.equal(
+      getStyle(document.body.querySelector('.ripple'), 'border-radius'),
+      '10px 10px 10px 10px')
+  })
 })

@@ -1,6 +1,6 @@
 import binders from './binders'
 import {getDefaults} from './defaults'
-import {getStyle} from './utility'
+import {getStyle, parseShorthand} from './utility'
 
 import './ripple.css'
 
@@ -27,7 +27,7 @@ export class Ripple {
     let pageX = 0
     let pageY = 0
 
-    if(event instanceof TouchEvent) {
+    if(typeof TouchEvent !== 'undefined' && event instanceof TouchEvent) {
       pageX = event.touches[0].pageX;
       pageY = event.touches[0].pageY;
     } else {
@@ -43,20 +43,25 @@ export class Ripple {
     let borderWidth, borderRadius
 
     this.radius = this.calcRadius(effectCenter, rect)
+
     let transitionTime = this.calcTransition()
     let maskStyle = this.$.style
     let effectStyle = this.$effect.style
 
     if(this.props.borderRadius === 'auto') {
-      borderRadius = parseInt(getStyle(target, 'border-radius'), 10)
+      borderRadius = getStyle(target, 'border-radius')
     } else {
       borderRadius = this.props.borderRadius
     }
+
     if(this.props.borderWidth === 'auto') {
-      borderWidth = parseInt(getStyle(target, 'border-width'), 10)
+      borderWidth = getStyle(target, 'border-width')
     } else {
       borderWidth = this.props.borderWidth
     }
+
+    borderRadius = parseShorthand(borderRadius)
+    borderWidth = parseShorthand(borderWidth);
 
     // position of mask
     maskStyle.left = `${rect.left}px`
@@ -64,16 +69,16 @@ export class Ripple {
     maskStyle.width = `${rect.width}px`
     maskStyle.height = `${rect.height}px`
 
+    // modifying mask to avoid edge breaking
+    maskStyle.borderRadius = borderRadius.val
+    maskStyle.borderWidth = borderWidth.val
+
     //resize & position ripple effect (this is all for performace)
     effectStyle.width = `${this.radius*2}px`
     effectStyle.height = `${this.radius*2}px`
 
-    effectStyle.left = `${effectCenter.left - this.radius - borderWidth}px`
-    effectStyle.top = `${effectCenter.top - this.radius - borderWidth}px`
-
-    // modifying mask to avoid edge breaking
-    maskStyle.borderRadius = borderRadius + 'px'
-    maskStyle.borderWidth = borderWidth + 'px'
+    effectStyle.left = `${effectCenter.left - this.radius - borderWidth.left}px`
+    effectStyle.top = `${effectCenter.top - this.radius - borderWidth.top}px`
 
     // set transition properties
     effectStyle.transitionTimingFunction  = this.props.timingFunction
