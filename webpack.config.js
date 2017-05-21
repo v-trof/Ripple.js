@@ -17,11 +17,13 @@ module.exports = {
           test: /\.js$/,
           include: [SRC_PATH],
           exclude: /(node_modules|bower_components)/,
-          loader: 'babel-loader',
-          query: {
-            plugins: ['transform-object-assign'],
-            presets: ['es2015']
-          },
+          use: [{
+              loader: 'babel-loader',
+              options: {
+                plugins: ['transform-object-assign'],
+                presets: ['es2015']
+              }
+          }]
         }, {
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
@@ -31,7 +33,9 @@ module.exports = {
                 minimize: true,
                 importLoaders: 1
               }
-            }, 'postcss-loader'],
+            }, {
+              loader: 'postcss-loader'
+            }],
           })
         }
     ]
