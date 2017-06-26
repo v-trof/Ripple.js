@@ -127,3 +127,9 @@ button:hover {
     width: calc(100vw - 4rem);
   }
 }
+
+
+.demo3 {
+  max-width: 90vw;
+  /* Because custom buttons can be too big */
+}
