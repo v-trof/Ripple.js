@@ -5,6 +5,7 @@
   pointer-events: none;
   border-color: transparent;
   border-style: solid;
+  direction: ltr;
 }
 
 .ripple__effect {

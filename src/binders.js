@@ -87,7 +87,9 @@ function watch(selector = "*", rippleFactory, scope = document) {
   }
 
   let endAdapter = function(event, handler) {
-    if(event.target.matches(selector)) {
+    if(event.target
+      && event.target !== document
+      && event.target.matches(selector)) {
       handle.end(event, event.target)
       event.target.classList.remove('ripple--mouseout-protected')
     }
