@@ -32,7 +32,7 @@ Make sure to include it in your webpack (npm/yarn usage) (uses babel-loader with
 
 ## Usage
 
-This is how you can tell Ripple.js to watch any element matching a selector
+This is how you can tell Ripple.js to watch any element matching a selector (including dynamically added)
 ```javascript
 ripple.watch('#demo-2 button')
 ```
