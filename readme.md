@@ -2,6 +2,7 @@
 
 Dependency-free Material Design ripple effect for the web, that wouldn't interfere your elements' DOM.
  - Tiny (3kb gzipped, even less with your webpack)
+ - Doesn't need a DOM node as a host, you can create ripples over inputs and images without hacks
  - Customizable
  - Capable of creating multiple ripples at once
  - Enlarges on mousedown, fades out on mouseup
