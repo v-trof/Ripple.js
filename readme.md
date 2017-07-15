@@ -2,6 +2,7 @@
 
 Dependency-free Material Design ripple effect for the web, that wouldn't interfere your elements' DOM.
  - Tiny (3kb gzipped, even less with your webpack)
+ - Doesn't need a DOM node as a host, you can create ripples over inputs and images without hacks
  - Customizable
  - Capable of creating multiple ripples at once
  - Enlarges on mousedown, fades out on mouseup
@@ -32,7 +33,7 @@ Make sure to include it in your webpack (npm/yarn usage) (uses babel-loader with
 
 ## Usage
 
-This is how you can tell Ripple.js to watch any element matching a selector
+This is how you can tell Ripple.js to watch any element matching a selector (including dynamically added)
 ```javascript
 ripple.watch('#demo-2 button')
 ```
