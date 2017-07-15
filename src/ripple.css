@@ -1,5 +1,6 @@
 .ripple {
   position: absolute;
+  top: 0px; /* so browsers would pre-calculate it off layout*/
   box-sizing: border-box;
   overflow: hidden;
   pointer-events: none;
