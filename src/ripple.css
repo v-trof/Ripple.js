@@ -14,6 +14,8 @@
   box-sizing: border-box;
   border-radius: 50%;
   transition-property: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .ripple__effect.ripple__effect--hidden {
