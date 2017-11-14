@@ -130,11 +130,13 @@ export class Ripple {
     let bodyRect = document.body.getBoundingClientRect() //for scroll fix
     let targetRect = target.getBoundingClientRect()
     let marginTop = parseInt(getStyle(document.body, 'margin-top'), 10)
+    let documentTop = parseInt(getStyle(document.body.parentElement, 'margin-top'), 10) + parseInt(getStyle(document.body.parentElement, 'padding-top'), 10)
     let marginLeft = parseInt(getStyle(document.body, 'margin-left'), 10)
+    let documentLeft = parseInt(getStyle(document.body.parentElement, 'margin-left'), 10) + parseInt(getStyle(document.body.parentElement, 'padding-left'), 10)
 
     let rect = {
-      top: targetRect.top - bodyRect.top + marginTop,
-      left: targetRect.left - bodyRect.left + marginLeft,
+      top: targetRect.top - bodyRect.top + marginTop + documentTop,
+      left: targetRect.left - bodyRect.left + marginLeft + documentLeft,
       width: targetRect.width,
       height: targetRect.height
     }
